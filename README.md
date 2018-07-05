@@ -4,10 +4,10 @@ Simple Python utility for extracting and reporting general statistical informati
 
 ## Input 
 
-Wxinfo expects to read a weather station logfile, called “wxlogfile.txt”, containing a series of lines of data, each of which is of the form: `date,time,temperature,barometer`
+Wxinfo expects to read a weather station logfile, called “wxlogfile.txt”, containing a series of lines of data, each of which is of the form: `datetime,sample#,temperature,barometer`
 Where:
-* `date` = the date the weather data was recorded, in the form MM/DD/YY, e.g. 03/27/2018 for March 27, 2018
-* `time` = the time of day the weather data was recorded, in the form hh:mm on a 24-hour clock, e.g. 13:53 = 1:53pm.
+* `datetime` = the date and time the weather data was recorded, in ISO 8601 format, which allows capturing the date, the time, and the timezone.  As an example, `2018-06-29T12:37:00-0700` is 12:37:00 local time on June 29th, 2018, in a timezone with an offset of -7 hours (-0700) from GMT.
+* `sample#` = a sequential sample number reported by the weather station, which can help detect when samples might be missing or otherwise unreported
 * `temperature` = the temperature reading in degrees Farenheit, e.g., 62.7
 * `barometer` = the barometric pressure in inches of mercury, e.g. 28.85
 The logfile could contain any number of lines of recorded data, over the period of many days.
